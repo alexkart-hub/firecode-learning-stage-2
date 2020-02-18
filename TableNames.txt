@@ -1,0 +1,8 @@
+Продавец, поставщик - vendor
+Поставка - supply
+Товар -  product
+Склад - warehouse
+Продажа - sale (Заказ - order)
+Покупатель - shopper
+Сотрудник - staffer
+Должность - position

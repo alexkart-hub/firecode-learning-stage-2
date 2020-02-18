@@ -1,0 +1,18 @@
+1.1 SELECT * FROM supply WHERE purchase_price > 10000
+1.2 SELECT * FROM supply WHERE purchase_quantity * purchase_price > 10000
+2. UPDATE shoppers SET shopper_address='' WHERE shopper_full_name LIKE '%Петров%'
+3. INSERT INTO staffers ( position_id, staff_full_name, staff_salary, staff_phone_numbe) VALUES ('3','Котов Константин Кириллович','24500','+7-888-987-78-99')
+4. DELETE FROM sales WHERE sale_date BETWEEN '2018-12-01' AND '2018-12-02'
+5. SELECT v.vendor_name, s.purchase_quantity, s.purchase_price, p.product_name FROM supply s, vendors v, products p WHERE s.vendor_id = 3 AND v.vendor_id = 3 AND p.product_id = s.product_id
+6.1 SELECT COUNT(sale_id), staff_id FROM sales WHERE sale_date BETWEEN '2018-11-01' AND '2018-11-30' GROUP BY staff_id ORDER BY COUNT(sale_id)
+6.2 SELECT SUM(sale_quantity), staff_id FROM sales WHERE sale_date BETWEEN '2018-11-01' AND '2018-11-30' GROUP BY staff_id ORDER BY SUM(sale_quantity)
+6.3 SELECT SUM(sale_quantity * sale_price), staff_id FROM sales WHERE sale_date BETWEEN '2018-11-01' AND '2018-11-30' GROUP BY staff_id ORDER BY SUM(sale_quantity * sale_price)
+7. SELECT p.product_name, p.product_price, w.warehouse_name FROM products p LEFT JOIN warehouses w ON p.warehouse_id = w.warehouse_id WHERE p.warehouse_id = 2 ORDER BY p.product_price DESC
+или
+SELECT p.product_name, p.product_price, w.warehouse_name FROM products p , warehouses w  WHERE p.warehouse_id = 2 AND w.warehouse_id = 2 ORDER BY p.product_price DESC
+8. SELECT MAX(sl.sale_price * sl.sale_quantity),MIN(sl.sale_price * sl.sale_quantity), st.staff_full_name, st.staff_salary FROM sales sl LEFT JOIN staffers st ON sl.staff_id = st.staff_id WHERE st.staff_salary > 30000 GROUP BY st.staff_id
+9. SELECT shopper_phone_number, shopper_address FROM shoppers WHERE shopper_address LIKE  '%Ростов-на-Дону%' OR shopper_address LIKE  '%Москва%'
+10.1 SELECT  w.warehouse_name, SUM(s.sale_quantity) AS Sum_quantity FROM warehouses w , products p, sales s WHERE w.warehouse_id = p.warehouse_id AND p.product_id=s.product_id GROUP BY w.warehouse_name
+10.2 SELECT  w.warehouse_name, p.product_name, SUM(s.sale_quantity) AS Sum_quantity FROM warehouses w , products p, sales s WHERE w.warehouse_id = p.warehouse_id AND p.product_id=s.product_id GROUP BY w.warehouse_name, p.product_name
+
+Более подробное описание запросов смотри в файле documents/report.odt (открывать с помощью Open Office)

@@ -2,4 +2,5 @@
 $server = 'localhost';
 $user = 'root';
 $password = '';
-$db = 'newDB';
+// $db = 'newDB';
+$db = 'shop';
